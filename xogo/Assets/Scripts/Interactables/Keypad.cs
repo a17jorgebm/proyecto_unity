@@ -21,6 +21,10 @@ public class Keypad : Interactable
 
     protected override void Interact()
     {
+        AudioSource audioSourcePuerta = door.GetComponent<BigDoor>().GetAudioSource();
+        if(audioSourcePuerta != null){
+            audioSourcePuerta.PlayOneShot(door.GetComponent<BigDoor>().GetOpeningSound());
+        }
         isDoorOpen=!isDoorOpen;
         door.GetComponent<Animator>().SetBool("isOpen",isDoorOpen);
     }
